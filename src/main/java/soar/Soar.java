@@ -34,4 +34,5 @@ public class Soar {
 	public String getVersion() {
 		return version;
 	}
+
 }
