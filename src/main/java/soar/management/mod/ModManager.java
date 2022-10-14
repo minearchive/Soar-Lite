@@ -3,6 +3,7 @@ package soar.management.mod;
 import java.util.ArrayList;
 
 import soar.management.mod.hud.FPSDisplayMod;
+import soar.management.mod.other.ClientSettingsMod;
 import soar.management.mod.player.SprintMod;
 
 public class ModManager {
@@ -20,6 +21,9 @@ public class ModManager {
 		mods.add(new SprintMod());
 		
 		//Render
+		
+		//Other
+		mods.add(new ClientSettingsMod());
 	}
 
 	public ArrayList<Mod> getMods() {

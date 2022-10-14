@@ -52,6 +52,16 @@ public class Mod {
 		}
 	}
 
+	public void toggle() {
+		toggled = !toggled;
+		
+		if(toggled) {
+			onEnable();
+		}else {
+			onDisable();
+		}
+	}
+	
 	public String getName() {
 		return name;
 	}
