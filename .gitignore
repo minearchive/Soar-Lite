@@ -31,5 +31,4 @@ replay_pid*
 
 .classpath
 .project
-Soar Client_Client.launch
-Soar Client_Server.launch
+Soar Lite Client_Client.launch
