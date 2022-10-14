@@ -1,6 +1,7 @@
 package soar.gui.settings;
 
 import net.minecraft.client.gui.GuiScreen;
+import soar.Soar;
 
 public class GuiClientSettings extends GuiScreen{
 
@@ -21,6 +22,6 @@ public class GuiClientSettings extends GuiScreen{
 	
 	@Override
     public void onGuiClosed() {
-		
+		Soar.instance.configManager.save();
     }
 }
