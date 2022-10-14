@@ -8,8 +8,8 @@ import soar.management.setting.SettingsManager;
 public class Soar {
 
 	public static Soar instance = new Soar();
-	
-	private String name = "Soar Lite", version = "1.0";
+
+	private final String name = "Soar Lite", version = "1.0";
 	
 	public KeyBindManager keyBindManager;
 	public SettingsManager settingsManager;

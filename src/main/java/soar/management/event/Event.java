@@ -28,9 +28,7 @@ public abstract class Event {
 			for (Data data : dataList) {
 				try {
 					data.target.invoke(data.source, event);
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
+				} catch (IllegalAccessException | InvocationTargetException e) {
 					e.printStackTrace();
 				}
 
