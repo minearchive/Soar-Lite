@@ -18,4 +18,9 @@ public class GuiClientSettings extends GuiScreen{
 	public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
 		
 	}
+	
+	@Override
+    public void onGuiClosed() {
+		
+    }
 }
