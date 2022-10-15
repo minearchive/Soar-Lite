@@ -47,7 +47,6 @@ repositories {
         name "spongepowered"
         url "https://repo.spongepowered.org/maven/"
     }
-    jcenter()
     mavenCentral()
 }
 
