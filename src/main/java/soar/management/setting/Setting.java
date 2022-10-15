@@ -35,6 +35,12 @@ public class Setting {
 		this.bval = bval;
 		this.mode = "Check";
 	}
+	public Setting(String name, Mod parent, Color cval){
+		this.name = name;
+		this.parent = parent;
+		this.cval = cval;
+		this.mode = "Color";
+	}
 	
 	public Setting(String name, Mod parent, double dval, double min, double max, boolean onlyint){
 		this.name = name;
@@ -117,6 +123,9 @@ public class Setting {
 	
 	public boolean isSlider(){
 		return this.mode.equalsIgnoreCase("Slider");
+	}
+	public boolean isColor(){
+		return this.mode.equalsIgnoreCase("Color");
 	}
 	
 	public boolean onlyInt(){

@@ -28,13 +28,11 @@ public class GuiClientSettings extends GuiScreen{
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		
-		ScaledResolution sr = new ScaledResolution(mc);
-		
 		int addX = 190;
 		int addY = 110;
 		
-		int x = (sr.getScaledWidth() / 2) - addX;
-		int y = (sr.getScaledHeight() / 2) - addY;
+		int x = (width / 2) - addX;
+		int y = (height / 2) - addY;
 		int width = addX * 2;
 		int height = addY * 2;
 		
@@ -55,7 +53,7 @@ public class GuiClientSettings extends GuiScreen{
 		//Draw categories
 		for(ModCategory c : ModCategory.values()) {
 			
-			String formattedName = c.name().replace("PERFORMANCE", "Performance").replace("RENDER", "Render").replace("PLAYER", "Player").replace("OTHER", "Other");
+			String formattedName = c.toString();
 
 			GlUtils.startScale(x, y, fr.getStringWidth(formattedName), categoryOffsetY + fr.FONT_HEIGHT, 1.1F);
 			fr.drawString(formattedName, x + 10, y + categoryOffsetY, -1);
@@ -78,14 +76,11 @@ public class GuiClientSettings extends GuiScreen{
 	
 	@Override
 	public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-		
-		ScaledResolution sr = new ScaledResolution(mc);
-		
 		int addX = 190;
 		int addY = 110;
 		
-		int x = (sr.getScaledWidth() / 2) - addX;
-		int y = (sr.getScaledHeight() / 2) - addY;
+		int x = (width / 2) - addX;
+		int y = (height / 2) - addY;
 		int width = addX * 2;
 		int height = addY * 2;
 		
