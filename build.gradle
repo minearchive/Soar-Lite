@@ -63,12 +63,7 @@ dependencies {
         exclude module: 'gson'
         exclude module: 'commons-io'
     }
-    compile fileTree(dir: "libs", include: "discord-rpc.jar")
-    compile fileTree(dir: "libs", include: "openauth-soar.jar")
-    compile fileTree(dir: "libs", include: "jfxrt.jar")
-    compile fileTree(dir: "libs", include: "jfxswt.jar")
-    compile fileTree(dir: "libs", include: "occlusionculling.jar")
-    compile fileTree(dir: "libs", include: "hypixel-api-core-4.0.jar")
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 mixin {
