@@ -103,6 +103,8 @@ public class GuiClientSettings extends GuiScreen{
 				
 				if(MouseUtils.isInside(mouseX, mouseY, x + 100, y + modOffsetY, width - 115, 28) && mouseButton == 0) {
 					m.toggle();
+				} else if(mouseButton == 1) {
+					mc.displayGuiScreen(new GuiModSettings(m, this));
 				}
 				
 				modOffsetY+=35;

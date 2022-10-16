@@ -1,11 +1,11 @@
 package soar.management.setting;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 
 import soar.management.mod.Mod;
 
-public class Setting {
+public class Setting implements Comparable<Setting> {
 	
 	private final String name;
 	private final Mod parent;
@@ -23,6 +23,9 @@ public class Setting {
 
 	// For color setting
 	private Color cval;
+
+	// Settings category
+	private String category;
 	
 
 	public Setting(String name, Mod parent, String sval, ArrayList<String> options){
@@ -139,4 +142,18 @@ public class Setting {
 	public String getMode() {
         return mode;
     }
+
+
+	@Override
+	public int compareTo(Setting setting) {
+		return this.getCategory().compareTo(setting.getCategory());
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 }

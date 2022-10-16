@@ -1,6 +1,6 @@
 package soar.management.setting;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import soar.Soar;
 import soar.management.mod.Mod;
@@ -24,9 +24,11 @@ public class SettingsManager {
 				out.add(s);
 			}
 		}
-		if(out.isEmpty()){
-			return null;
-		}
+		// I don't want to do null checks
+//		if(out.isEmpty()){
+//			return null;
+//		}
+		Collections.sort(out);
 		return out;
 	}
 	

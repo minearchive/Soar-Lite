@@ -1,6 +1,7 @@
 package soar.management.mod;
 
 import soar.Soar;
+import soar.management.setting.*;
 import soar.utils.RenderUtils;
 
 public class HUDMod extends Mod {
@@ -10,8 +11,15 @@ public class HUDMod extends Mod {
 	}
 	
 	public void setupHUD() {
-		this.addBooleanSetting("Font Shadow", this, true);
-		this.addBooleanSetting("Background", this, true);
+		Setting font_shadow = this.addBooleanSetting("Font Shadow", this, true);
+		Setting background = this.addBooleanSetting("Background", this, true);
+
+		// TODO: Make it in constructor
+		font_shadow.setCategory("Render");
+		background.setCategory("Render");
+
+		Setting test = this.addSliderSetting("Test", this, 0, 0, 15, false);
+		test.setCategory("Test");
 	}
 
 	public void onRender2D() {
