@@ -1,5 +1,6 @@
 package soar.management.setting;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import soar.management.mod.Mod;
@@ -19,6 +20,9 @@ public class Setting {
 	private double min;
 	private double max;
 	private boolean onlyint = false;
+
+	// For color setting
+	private Color cval;
 	
 
 	public Setting(String name, Mod parent, String sval, ArrayList<String> options){
