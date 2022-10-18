@@ -1,7 +1,7 @@
 package soar.management.mod.other;
 
 import soar.Soar;
-import soar.gui.settings.GuiClientSettings;
+import soar.gui.settings.GuiModMenu;
 import soar.management.event.EventTarget;
 import soar.management.event.impl.EventKey;
 import soar.management.mod.Mod;
@@ -28,7 +28,7 @@ public class ClientSettingsMod extends Mod{
 	@EventTarget
 	public void onKey(EventKey event) {
 		if(event.getKeyCode() == Soar.instance.keyBindManager.CLIENT_SETTING.getKeyCode()) {
-			mc.displayGuiScreen(new GuiClientSettings());
+			mc.displayGuiScreen(new GuiModMenu());
 		}
 	}
 }

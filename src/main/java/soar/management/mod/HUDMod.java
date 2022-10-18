@@ -30,7 +30,11 @@ public class HUDMod extends Mod {
 		if(background) {
 			RenderUtils.drawRect(this.getX(), this.getY(), fr.getStringWidth(this.getText()) + 8, fr.FONT_HEIGHT + 8, this.getBackgroundColor());
 		}
+		
 		fr.drawString(this.getText(), this.getX() + 4, this.getY() + 5, this.getFontColor(), fontShadow);
+		
+		this.setWidth(fr.getStringWidth(this.getText()) + 8);
+		this.setHeight(fr.FONT_HEIGHT + 8);
 	}
 	
 	public String getText() {

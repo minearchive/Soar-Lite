@@ -3,20 +3,20 @@ package soar.gui.settings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
 import soar.Soar;
+import soar.gui.GuiEditHUD;
 import soar.management.mod.Mod;
 import soar.management.mod.ModCategory;
 import soar.utils.GlUtils;
 import soar.utils.RenderUtils;
 import soar.utils.mouse.MouseUtils;
 
-public class GuiClientSettings extends GuiScreen{
+public class GuiModMenu extends GuiScreen{
 
 	private FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
 	private ModCategory selectedCategory;
 	
-	public GuiClientSettings() {
+	public GuiModMenu() {
 		selectedCategory = ModCategory.HUD;
 	}
 	
@@ -72,6 +72,10 @@ public class GuiClientSettings extends GuiScreen{
 				modOffsetY+=35;
 			}
 		}
+		
+		//Draw Edit Text
+		RenderUtils.drawRect(x, (y + height) - 24, 85, 24, Integer.MIN_VALUE);
+		fr.drawString("Edit HUD", x + 23, (y + height) - fr.FONT_HEIGHT - 7, -1);
 	}
 	
 	@Override
@@ -109,6 +113,11 @@ public class GuiClientSettings extends GuiScreen{
 				
 				modOffsetY+=35;
 			}
+		}
+		
+		//Go to edit screen
+		if(MouseUtils.isInside(mouseX, mouseY, x, (y + height) - 24, 85, 24) && mouseButton == 0) {
+			mc.displayGuiScreen(new GuiEditHUD());
 		}
 	}
 	
