@@ -8,6 +8,7 @@ import soar.management.mod.hud.PingDisplayMod;
 import soar.management.mod.hud.PotionCounterMod;
 import soar.management.mod.hud.ServerIPDisplayMod;
 import soar.management.mod.other.ClientSettingsMod;
+import soar.management.mod.player.HypixelMod;
 import soar.management.mod.player.SprintMod;
 
 public class ModManager {
@@ -26,6 +27,7 @@ public class ModManager {
 		//Performance
 		
 		//Player
+		mods.add(new HypixelMod());
 		mods.add(new SprintMod());
 		
 		//Render

@@ -6,6 +6,7 @@
     "client.MixinClientBrandRetriever",
     "client.MixinMinecraft",
     "entity.MixinEntityPlayerSP",
-    "gui.MixinGuiIngame"
+    "gui.MixinGuiIngame",
+    "network.MixinNetworkManager"
   ]
   }

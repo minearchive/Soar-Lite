@@ -15,6 +15,14 @@ public class ServerUtils implements Utils{
 		return ip;
 	}
 	
+	public static boolean isHypixel() {
+		if(mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP.contains("hypixel")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public static int getPing() {
 		if(mc.isSingleplayer()) {
 			return 0;
