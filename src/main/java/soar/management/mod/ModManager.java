@@ -2,6 +2,7 @@ package soar.management.mod;
 
 import java.util.ArrayList;
 
+import soar.management.mod.hud.DayCounterMod;
 import soar.management.mod.hud.FPSDisplayMod;
 import soar.management.mod.other.ClientSettingsMod;
 import soar.management.mod.player.SprintMod;
@@ -13,6 +14,7 @@ public class ModManager {
 	public ModManager() {
 		
 		//HUD
+		mods.add(new DayCounterMod());
 		mods.add(new FPSDisplayMod());
 		
 		//Performance
