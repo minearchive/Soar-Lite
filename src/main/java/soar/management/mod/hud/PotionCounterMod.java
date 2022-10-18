@@ -23,6 +23,6 @@ public class PotionCounterMod extends HUDMod{
 	
 	@Override
 	public String getText() {
-		return PlayerUtils.getPotionsFromInventory() + " pot" + (PlayerUtils.getPotionsFromInventory() <= 1 ? "s" : "");
+		return PlayerUtils.getPotionsFromInventory() + " pots";
 	}
 }
