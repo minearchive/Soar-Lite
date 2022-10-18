@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import soar.management.mod.hud.DayCounterMod;
 import soar.management.mod.hud.FPSDisplayMod;
 import soar.management.mod.hud.PingDisplayMod;
+import soar.management.mod.hud.PotionCounterMod;
 import soar.management.mod.hud.ServerIPDisplayMod;
 import soar.management.mod.other.ClientSettingsMod;
 import soar.management.mod.player.SprintMod;
@@ -19,6 +20,7 @@ public class ModManager {
 		mods.add(new DayCounterMod());
 		mods.add(new FPSDisplayMod());
 		mods.add(new PingDisplayMod());
+		mods.add(new PotionCounterMod());
 		mods.add(new ServerIPDisplayMod());
 		
 		//Performance
