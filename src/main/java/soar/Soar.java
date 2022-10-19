@@ -13,7 +13,9 @@ public final class Soar {
 
 	public static final Soar INSTANCE = new Soar();
 
-	private final String name = "Soar Lite", version = "1.0";
+	private static final String
+			NAME = "Soar Lite",
+			VERSION = "1.0";
 
 	public KeyBindManager keyBindManager;
 	public SettingsManager settingsManager;
@@ -26,8 +28,8 @@ public final class Soar {
 	public void startClient() {
 		soarDir = new File(Minecraft.getMinecraft().mcDataDir, "soar-lite");
 
-		if(!soarDir.exists()) {
-			soarDir.mkdir();
+		if (!soarDir.exists()) {
+			soarDir.mkdirs();
 		}
 
 		keyBindManager = new KeyBindManager();
@@ -42,11 +44,11 @@ public final class Soar {
 	}
 
 	public String getName() {
-		return name;
+		return NAME;
 	}
 
 	public String getVersion() {
-		return version;
+		return VERSION;
 	}
 
 	public File getSoarDir() {
