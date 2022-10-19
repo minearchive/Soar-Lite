@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 public final class EventManager {
 
-	private Map<Class<?>, List<Data>> REGISTRY_MAP = new HashMap<>();
+	private Map<Class<?>, ArrayHelper<Data>> REGISTRY_MAP = new HashMap<>();
 
 	public void register(Object o) {
 		for (Method method : o.getClass().getDeclaredMethods()) {
@@ -35,7 +35,7 @@ public final class EventManager {
 				sortListValue((Class<? extends Event>) clazz);
 			}
 		} else {
-			List<Data> data = new ArrayList<>();
+			ArrayHelper<Data> data = new ArrayHelper<>();
 			data.add(methodData);
 			REGISTRY_MAP.put(clazz, data);
 		}
@@ -43,7 +43,7 @@ public final class EventManager {
 
 	public void unregister(Object o) {
 
-		for (List<Data> list : REGISTRY_MAP.values()) {
+		for (ArrayHelper<Data> list : REGISTRY_MAP.values()) {
 			for (Data data : list) {
 				if (data.source.equals(o)) {
 					list.remove(data);
@@ -67,8 +67,7 @@ public final class EventManager {
 	}
 
 	public void cleanMap(boolean b) {
-
-		Iterator<Entry<Class<?>, List<Data>>> iterator = REGISTRY_MAP.entrySet().iterator();
+		Iterator<Entry<Class<?>, ArrayHelper<Data>>> iterator = REGISTRY_MAP.entrySet().iterator();
 
 		while (iterator.hasNext()) {
 			if (!b || iterator.next().getValue().isEmpty()) {
@@ -78,8 +77,7 @@ public final class EventManager {
 	}
 
 	public void removeEnty(Class<? extends Event> clazz) {
-
-		Iterator<Entry<Class<?>, List<Data>>> iterator = REGISTRY_MAP.entrySet().iterator();
+		Iterator<Entry<Class<?>, ArrayHelper<Data>>> iterator = REGISTRY_MAP.entrySet().iterator();
 
 		while (iterator.hasNext()) {
 			if (iterator.next().getKey().equals(clazz)) {
@@ -90,8 +88,7 @@ public final class EventManager {
 	}
 
 	private void sortListValue(Class<? extends Event> clazz) {
-		// List::sort is a thing isn't it?
-		List<Data> array = new ArrayList<>();
+		ArrayHelper<Data> array = new ArrayHelper<>();
 
 		for (byte b : Priority.VALUE_ARRAY) {
 			for (Data methodData : REGISTRY_MAP.get(clazz)) {
@@ -108,7 +105,7 @@ public final class EventManager {
 		return method.getParameterTypes().length == 1 && method.isAnnotationPresent(EventTarget.class);
 	}
 
-	public List<Data> get(Class<? extends Event> clazz) {
+	public ArrayHelper<Data> get(Class<? extends Event> clazz) {
 		return REGISTRY_MAP.get(clazz);
 	}
 

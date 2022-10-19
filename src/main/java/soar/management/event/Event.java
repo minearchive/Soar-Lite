@@ -24,7 +24,7 @@ public abstract class Event {
 	}
 
 	private static void call(Event event) {
-		List<Data> dataList = Soar.INSTANCE.eventManager.get(event.getClass());
+		ArrayHelper<Data> dataList = Soar.INSTANCE.eventManager.get(event.getClass());
 		if (dataList != null) {
 			for (Data data : dataList) {
 				try {
