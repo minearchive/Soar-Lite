@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import soar.Soar;
 import soar.management.mod.Mod;
@@ -84,35 +83,25 @@ public final class ConfigManager {
 	 * Save Soar Lite Config
 	 */
 	public void save() {
-
-		ArrayList<String> toSave = new ArrayList<String>();
-
-		for(Mod m : Soar.INSTANCE.modManager.getMods()) {
-			if(!m.isHide()) {
-				toSave.add("MOD:" + m.getName() + ":" + m.isToggled());
-				toSave.add("POS:" + m.getName() + ":" + m.getX() + ":" + m.getY() + ":" + m.getWidth() + ":" + m.getHeight());
+		try(PrintWriter writer = new PrintWriter(this.configFile)) {
+			for(Mod m : Soar.INSTANCE.modManager.getMods()) {
+				if(!m.isHide()) {
+					writer.println("MOD:" + m.getName() + ":" + m.isToggled());
+					writer.println("POS:" + m.getName() + ":" + m.getX() + ":" + m.getY() + ":" + m.getWidth() + ":" + m.getHeight());
+				}
 			}
-		}
 
-		for(Setting set : Soar.INSTANCE.settingsManager.getSettings()) {
-
-			if (set.isCheck()) {
-				toSave.add("SET:" + set.getName() + ":" + set.getParentMod().getName() + ":" + set.getValBoolean());
+			for(Setting set : Soar.INSTANCE.settingsManager.getSettings()) {
+				if (set.isCheck()) {
+					writer.println("SET:" + set.getName() + ":" + set.getParentMod().getName() + ":" + set.getValBoolean());
+				}
+				if (set.isCombo()) {
+					writer.println("SET:" + set.getName() + ":" + set.getParentMod().getName() + ":" + set.getValString());
+				}
+				if (set.isSlider()) {
+					writer.println("SET:" + set.getName() + ":" + set.getParentMod().getName() + ":" + set.getValDouble());
+				}
 			}
-			if (set.isCombo()) {
-				toSave.add("SET:" + set.getName() + ":" + set.getParentMod().getName() + ":" + set.getValString());
-			}
-			if (set.isSlider()) {
-				toSave.add("SET:" + set.getName() + ":" + set.getParentMod().getName() + ":" + set.getValDouble());
-			}
-		}
-
-		try {
-			PrintWriter pw = new PrintWriter(this.configFile);
-			for (String str : toSave) {
-				pw.println(str);
-			}
-			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
