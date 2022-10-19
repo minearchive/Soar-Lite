@@ -6,7 +6,7 @@ import soar.management.event.impl.EventUpdate;
 import soar.management.mod.Mod;
 import soar.management.mod.ModCategory;
 
-public class SprintMod extends Mod{
+public final class SprintMod extends Mod {
 
 	public SprintMod() {
 		super("Sprint", ModCategory.PLAYER);
@@ -16,7 +16,7 @@ public class SprintMod extends Mod{
 	public void onUpdate(EventUpdate event) {
 		KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
 	}
-	
+
 	@Override
 	public void onDisable() {
 		super.onDisable();

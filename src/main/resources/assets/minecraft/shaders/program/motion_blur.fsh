@@ -11,6 +11,6 @@ uniform vec2 InSize;
 uniform float BlurFactor;
 
 void main() {
-    gl_FragColor = mix(texture2D(DiffuseSampler, texCoord), texture2D(PrevSampler, texCoord), BlurFactor);
-    gl_FragColor.w = 1.0;
+	gl_FragColor = mix(texture2D(DiffuseSampler, texCoord), texture2D(PrevSampler, texCoord), BlurFactor);
+	gl_FragColor.w = 1.0;
 }

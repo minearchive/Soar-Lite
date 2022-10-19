@@ -8,14 +8,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
-public class PlayerUtils implements Utils {
-	
+public final class PlayerUtils implements Utils {
+
     public static int getPotionsFromInventory() {
         int count = 0;
 
+        // TODO fix pyramid
         for (int i = 1; i < 45; ++i) {
-            if (mc.thePlayer.inventoryContainer.getSlot(i).getHasStack()) {
-                ItemStack is = mc.thePlayer.inventoryContainer.getSlot(i).getStack();
+            if (MC.thePlayer.inventoryContainer.getSlot(i).getHasStack()) {
+                ItemStack is = MC.thePlayer.inventoryContainer.getSlot(i).getStack();
                 Item item = is.getItem();
 
                 if (item instanceof ItemPotion) {

@@ -8,7 +8,7 @@ import soar.management.mod.ModCategory;
 import soar.management.setting.Setting;
 import soar.utils.ServerUtils;
 
-public class HypixelMod extends Mod{
+public final class HypixelMod extends Mod {
 
 	public HypixelMod() {
 		super("Hypixel", ModCategory.PLAYER);
@@ -17,10 +17,10 @@ public class HypixelMod extends Mod{
 	@Override
 	public void setup() {
 		Setting autoGG = this.addBooleanSetting("Auto GG", this, true);
-		
+
 		autoGG.setCategory("Auto Mods");
 	}
-	
+
     @EventTarget
     public void onReceivePacket(EventReceivePacket event) {
     	if(ServerUtils.isHypixel()) {

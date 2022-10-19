@@ -1,6 +1,7 @@
 package soar.management.event;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import soar.Soar;
 
@@ -23,7 +24,7 @@ public abstract class Event {
 	}
 
 	private static void call(Event event) {
-		ArrayHelper<Data> dataList = Soar.instance.eventManager.get(event.getClass());
+		List<Data> dataList = Soar.INSTANCE.eventManager.get(event.getClass());
 		if (dataList != null) {
 			for (Data data : dataList) {
 				try {

@@ -16,12 +16,12 @@ public class MixinMinecraft {
 
     @Inject(method = "startGame", at = @At(value = "FIELD", target = "Lnet/minecraft/client/Minecraft;ingameGUI:Lnet/minecraft/client/gui/GuiIngame;", shift = At.Shift.AFTER))
     private void startClient(CallbackInfo ci) {
-    	Soar.instance.startClient();
+    	Soar.INSTANCE.startClient();
     }
     
     @Inject(method = "shutdown", at = @At("HEAD"))
     private void stopClient(CallbackInfo ci) {
-    	Soar.instance.stopClient();
+    	Soar.INSTANCE.stopClient();
     }
     
     @Inject(method = "runTick", at = @At("TAIL"))

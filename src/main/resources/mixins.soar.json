@@ -1,12 +1,12 @@
 {
-  "package": "soar.mixin.mixins",
-  "refmap": "mixins.soar.refmap.json",
-  "compatibilityLevel": "JAVA_8",
-  "mixins": [
-    "client.MixinClientBrandRetriever",
-    "client.MixinMinecraft",
-    "entity.MixinEntityPlayerSP",
-    "gui.MixinGuiIngame",
-    "network.MixinNetworkManager"
-  ]
-  }
+	"package": "soar.mixin.mixins",
+	"refmap": "mixins.soar.refmap.json",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"client.MixinClientBrandRetriever",
+		"client.MixinMinecraft",
+		"entity.MixinEntityPlayerSP",
+		"gui.MixinGuiIngame",
+		"network.MixinNetworkManager"
+	]
+}
