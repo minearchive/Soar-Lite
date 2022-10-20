@@ -14,22 +14,22 @@ import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
-public class SoarTweaker implements ITweaker {
+public final class SoarTweaker implements ITweaker {
 
     private final List<String> launchArguments = new ArrayList<>();
 
 	public static boolean hasOptifine = false;
-	
+
     @Override
     public void acceptOptions(List<String> args, File gameDir, File assetsDir, String profile) {
-    	
+
 		try {
 			Class.forName("optifine.Patcher");
 			hasOptifine = true;
 		}
 		catch(ClassNotFoundException e) {
 		}
-		
+
         this.launchArguments.addAll(args);
 
         if (profile != null) {
@@ -50,7 +50,7 @@ public class SoarTweaker implements ITweaker {
 
     @Override
     public void injectIntoClassLoader(LaunchClassLoader classLoader) {
-    	
+
         MixinBootstrap.init();
 
         MixinEnvironment env = MixinEnvironment.getDefaultEnvironment();
@@ -74,7 +74,7 @@ public class SoarTweaker implements ITweaker {
     public String[] getLaunchArguments() {
         return launchArguments.toArray(new String[0]);
     }
-    
+
     @SuppressWarnings("unchecked")
     private void unlockLwjgl() {
         try {

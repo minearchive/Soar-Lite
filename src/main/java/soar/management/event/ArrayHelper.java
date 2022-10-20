@@ -17,7 +17,6 @@ public class ArrayHelper<T> implements Iterable<T> {
 
 	@SuppressWarnings("unchecked")
 	public void add(final T t) {
-
 		if (t != null) {
 			final Object[] array = new Object[this.size() + 1];
 
@@ -35,7 +34,6 @@ public class ArrayHelper<T> implements Iterable<T> {
 
 	@SuppressWarnings("unchecked")
 	public boolean contains(final T t) {
-
 		Object[] array;
 
 		for (int lenght = (array = this.array()).length, i = 0; i < lenght; i++) {
@@ -50,7 +48,6 @@ public class ArrayHelper<T> implements Iterable<T> {
 
 	@SuppressWarnings("unchecked")
 	public void remove(final T t) {
-
 		if (this.contains(t)) {
 			final Object[] array = new Object[this.size() - 1];
 			boolean b = true;
@@ -68,22 +65,18 @@ public class ArrayHelper<T> implements Iterable<T> {
 	}
 
 	public T[] array() {
-
-		return (T[]) this.elements;
+		return this.elements;
 	}
 
 	public int size() {
-
 		return this.array().length;
 	}
 
-	public void set(final T[] array) {
-
+	public void set(T[] array) {
 		this.elements = array;
 	}
 
-	public T get(final int index) {
-
+	public T get(int index) {
 		return this.array()[index];
 	}
 
@@ -98,7 +91,6 @@ public class ArrayHelper<T> implements Iterable<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-
 		return new Iterator<T>() {
 
 			private int index = 0;

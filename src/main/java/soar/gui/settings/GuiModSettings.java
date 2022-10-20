@@ -14,7 +14,7 @@ import java.awt.*;
 import java.io.*;
 import java.text.*;
 
-public class GuiModSettings extends GuiScreen {
+public final class GuiModSettings extends GuiScreen {
 	private final Mod mod;
 	private final GuiScreen parentScreen;
 
@@ -23,7 +23,7 @@ public class GuiModSettings extends GuiScreen {
 			throw new IllegalArgumentException("Mod is null");
 
 		this.mod = mod;
-		this.parentScreen = parent; 
+		this.parentScreen = parent;
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class GuiModSettings extends GuiScreen {
 
 		String category = "";
 
-		for (Setting setting : Soar.instance.settingsManager.getSettingByMod(mod)) {
+		for (Setting setting : Soar.INSTANCE.settingsManager.getSettingByMod(mod)) {
 			int settingHeight = fr.FONT_HEIGHT + 5;
 			if(!category.equals(setting.getCategory())) {
 
@@ -85,7 +85,6 @@ public class GuiModSettings extends GuiScreen {
 
 			fr.drawString(setting.getName(), x + 97, settingY, -1);
 			if(setting.isCheck()) {
-//				RenderUtils.drawRect(x + 99 + fr.getStringWidth(setting.getName()), settingY - 1, 9,9, Color.black.getRGB());
 				RenderUtils.drawRect(x + 102 + fr.getStringWidth(setting.getName()), settingY - 1, 9,9, (setting.getValBoolean() ? Color.red : Color.green).getRGB());
 			}
 			if(setting.isSlider()) {

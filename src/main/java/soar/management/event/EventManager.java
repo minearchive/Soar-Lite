@@ -1,18 +1,20 @@
 package soar.management.event;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class EventManager {
+public final class EventManager {
 
-	private Map<Class<?>, ArrayHelper<Data>> REGISTRY_MAP = new HashMap<Class<?>, ArrayHelper<Data>>();
+	private Map<Class<?>, ArrayHelper<Data>> REGISTRY_MAP = new HashMap<>();
 
 	public void register(Object o) {
 		for (Method method : o.getClass().getDeclaredMethods()) {
-			if (!isMethodBad(method)) {
+			if (isApplicable(method)) {
 				register(method, o);
 			}
 		}
@@ -21,7 +23,7 @@ public class EventManager {
 	@SuppressWarnings("unchecked")
 	private void register(Method method, Object o) {
 		Class<?> clazz = method.getParameterTypes()[0];
-		final Data methodData = new Data(o, method, method.getAnnotation(EventTarget.class).value());
+		Data methodData = new Data(o, method, method.getAnnotation(EventTarget.class).value());
 
 		if (!methodData.target.isAccessible()) {
 			methodData.target.setAccessible(true);
@@ -33,20 +35,18 @@ public class EventManager {
 				sortListValue((Class<? extends Event>) clazz);
 			}
 		} else {
-			REGISTRY_MAP.put((Class<? extends Event>) clazz, new ArrayHelper<Data>() {
-				{
-					this.add(methodData);
-				}
-			});
+			ArrayHelper<Data> data = new ArrayHelper<>();
+			data.add(methodData);
+			REGISTRY_MAP.put(clazz, data);
 		}
 	}
 
-	public void unregister(final Object o) {
+	public void unregister(Object o) {
 
-		for (ArrayHelper<Data> flexibalArray : REGISTRY_MAP.values()) {
-			for (Data methodData : flexibalArray) {
-				if (methodData.source.equals(o)) {
-					flexibalArray.remove(methodData);
+		for (ArrayHelper<Data> list : REGISTRY_MAP.values()) {
+			for (Data data : list) {
+				if (data.source.equals(o)) {
+					list.remove(data);
 				}
 			}
 		}
@@ -54,7 +54,7 @@ public class EventManager {
 		cleanMap(true);
 	}
 
-	public void unregister(final Object o, final Class<? extends Event> clazz) {
+	public void unregister(Object o, Class<? extends Event> clazz) {
 		if (REGISTRY_MAP.containsKey(clazz)) {
 			for (final Data methodData : REGISTRY_MAP.get(clazz)) {
 				if (methodData.source.equals(o)) {
@@ -67,7 +67,6 @@ public class EventManager {
 	}
 
 	public void cleanMap(boolean b) {
-
 		Iterator<Entry<Class<?>, ArrayHelper<Data>>> iterator = REGISTRY_MAP.entrySet().iterator();
 
 		while (iterator.hasNext()) {
@@ -78,7 +77,6 @@ public class EventManager {
 	}
 
 	public void removeEnty(Class<? extends Event> clazz) {
-
 		Iterator<Entry<Class<?>, ArrayHelper<Data>>> iterator = REGISTRY_MAP.entrySet().iterator();
 
 		while (iterator.hasNext()) {
@@ -90,25 +88,24 @@ public class EventManager {
 	}
 
 	private void sortListValue(Class<? extends Event> clazz) {
-
-		ArrayHelper<Data> flexibleArray = new ArrayHelper<Data>();
+		ArrayHelper<Data> array = new ArrayHelper<>();
 
 		for (byte b : Priority.VALUE_ARRAY) {
 			for (Data methodData : REGISTRY_MAP.get(clazz)) {
 				if (methodData.priority == b) {
-					flexibleArray.add(methodData);
+					array.add(methodData);
 				}
 			}
 		}
 
-		REGISTRY_MAP.put(clazz, flexibleArray);
+		REGISTRY_MAP.put(clazz, array);
 	}
 
-	private boolean isMethodBad(final Method method) {
-		return method.getParameterTypes().length != 1 || !method.isAnnotationPresent(EventTarget.class);
+	private boolean isApplicable(Method method) {
+		return method.getParameterTypes().length == 1 && method.isAnnotationPresent(EventTarget.class);
 	}
 
-	public ArrayHelper<Data> get(final Class<? extends Event> clazz) {
+	public ArrayHelper<Data> get(Class<? extends Event> clazz) {
 		return REGISTRY_MAP.get(clazz);
 	}
 

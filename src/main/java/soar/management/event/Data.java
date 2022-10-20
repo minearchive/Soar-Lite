@@ -2,7 +2,7 @@ package soar.management.event;
 
 import java.lang.reflect.Method;
 
-public class Data {
+public final class Data {
 
 	public final Object source;
 	public final Method target;

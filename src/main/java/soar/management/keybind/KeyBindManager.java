@@ -8,17 +8,17 @@ import org.lwjgl.input.Keyboard;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 
-public class KeyBindManager {
+public final class KeyBindManager {
 
-	private Minecraft mc = Minecraft.getMinecraft();
-	private String category = "Soar Lite";
-	
-	public KeyBinding CLIENT_SETTING = new KeyBinding("Client Settings", Keyboard.KEY_RSHIFT, category);
-	
+	private final Minecraft mc = Minecraft.getMinecraft();
+	private static final String CATEGORY = "Soar Lite";
+
+	public KeyBinding CLIENT_SETTING = new KeyBinding("Client Settings", Keyboard.KEY_RSHIFT, CATEGORY);
+
 	public KeyBindManager() {
 		this.register(CLIENT_SETTING);
 	}
-	
+
     public void register(KeyBinding key) {
         mc.gameSettings.keyBindings = ArrayUtils.add(mc.gameSettings.keyBindings, key);
     }

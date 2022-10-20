@@ -35,11 +35,11 @@ public class Mod {
 	public void setup() {}
 	
 	public void onEnable() {
-		Soar.instance.eventManager.register(this);
+		Soar.INSTANCE.eventManager.register(this);
 	}
 	
 	public void onDisable() {
-		Soar.instance.eventManager.unregister(this);
+		Soar.INSTANCE.eventManager.unregister(this);
 	}
 	
 	public void setToggled(boolean toggled) {
@@ -148,19 +148,19 @@ public class Mod {
 	
 	public Setting addBooleanSetting(String name, Mod mod, boolean toggle) {
 		Setting setting;
-		Soar.instance.settingsManager.addSetting(setting = new Setting(name, mod, toggle));
+		Soar.INSTANCE.settingsManager.addSetting(setting = new Setting(name, mod, toggle));
 		return setting;
 	}
 	
 	public Setting addModeSetting(String name, Mod mod, String defaultMode, ArrayList<String> options) {
 		Setting setting;
-		Soar.instance.settingsManager.addSetting(setting =new Setting(name, mod, defaultMode, options));
+		Soar.INSTANCE.settingsManager.addSetting(setting =new Setting(name, mod, defaultMode, options));
 		return setting;
 	}
 	
 	public Setting addSliderSetting(String name, Mod mod, double defaultValue, double minValue, double maxValue, boolean intValue) {
 		Setting setting;
-		Soar.instance.settingsManager.addSetting(setting =new Setting(name, mod, defaultValue, minValue, maxValue, intValue));
+		Soar.INSTANCE.settingsManager.addSetting(setting =new Setting(name, mod, defaultValue, minValue, maxValue, intValue));
 		return setting;
 	}
 }

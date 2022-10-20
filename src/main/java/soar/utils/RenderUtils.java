@@ -4,10 +4,9 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.renderer.GlStateManager;
 
-public class RenderUtils implements Utils {
-	
+public final class RenderUtils implements Utils {
+
     public static void drawRect(float x, float y, float width, float height, int color) {
-    	
         float f = (color >> 24 & 0xFF) / 255.0F;
         float f1 = (color >> 16 & 0xFF) / 255.0F;
         float f2 =  (color >> 8 & 0xFF) / 255.0F;

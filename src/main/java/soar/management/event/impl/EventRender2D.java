@@ -2,10 +2,10 @@ package soar.management.event.impl;
 
 import soar.management.event.Event;
 
-public class EventRender2D extends Event {
+public final class EventRender2D extends Event {
 
-	private float partialTicks;
-	
+	private final float partialTicks;
+
 	public EventRender2D(float partialTicks) {
 		this.partialTicks = partialTicks;
 	}

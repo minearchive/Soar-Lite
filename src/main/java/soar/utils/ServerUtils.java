@@ -1,33 +1,28 @@
 package soar.utils;
 
-public class ServerUtils implements Utils{
+public final class ServerUtils implements Utils {
 
 	public static String getServerIP() {
-		
 		String ip;
-		
-		if(mc.getCurrentServerData().serverIP != null) {
-			ip = mc.getCurrentServerData().serverIP;
-		}else {
+
+		if (MC.getCurrentServerData().serverIP != null) {
+			ip = MC.getCurrentServerData().serverIP;
+		} else {
 			ip = "SinglePlayer";
 		}
-		
+
 		return ip;
 	}
-	
+
 	public static boolean isHypixel() {
-		if(mc.getCurrentServerData() != null && mc.getCurrentServerData().serverIP.contains("hypixel")) {
-			return true;
-		}else {
-			return false;
-		}
+		return MC.getCurrentServerData() != null && MC.getCurrentServerData().serverIP.contains("hypixel");
 	}
-	
+
 	public static int getPing() {
-		if(mc.isSingleplayer()) {
+		if (MC.isSingleplayer()) {
 			return 0;
-		}else {
-			return (int) mc.getCurrentServerData().pingToServer;
+		} else {
+			return (int) MC.getCurrentServerData().pingToServer;
 		}
 	}
 }
