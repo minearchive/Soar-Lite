@@ -32,3 +32,5 @@ replay_pid*
 .classpath
 .project
 Soar Lite Client_Client.launch
+
+.idea
