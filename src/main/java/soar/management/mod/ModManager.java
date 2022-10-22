@@ -11,6 +11,7 @@ import soar.management.mod.hud.ServerIPDisplayMod;
 import soar.management.mod.other.ClientSettingsMod;
 import soar.management.mod.player.HypixelMod;
 import soar.management.mod.player.SprintMod;
+import soar.management.mod.render.FullbrightMod;
 
 public final class ModManager {
 
@@ -33,7 +34,8 @@ public final class ModManager {
 		mods.add(new SprintMod());
 
 		//Render
-
+		mods.add(new FullbrightMod());
+		
 		//Other
 		mods.add(new ClientSettingsMod());
 	}

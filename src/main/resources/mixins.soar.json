@@ -3,10 +3,12 @@
 	"refmap": "mixins.soar.refmap.json",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
+	   	"chunk.MixinChunk",
 		"client.MixinClientBrandRetriever",
 		"client.MixinMinecraft",
 		"entity.MixinEntityPlayerSP",
 		"gui.MixinGuiIngame",
-		"network.MixinNetworkManager"
+		"network.MixinNetworkManager",
+		"world.MixinWorld"
 	]
 }
