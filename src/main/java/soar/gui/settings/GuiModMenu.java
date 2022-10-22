@@ -125,4 +125,9 @@ public final class GuiModMenu extends GuiScreen {
     public void onGuiClosed() {
 		Soar.INSTANCE.configManager.save();
     }
+
+	@Override
+	public boolean doesGuiPauseGame() {
+		return false;
+	}
 }
