@@ -11,12 +11,15 @@ public class HUDMod extends Mod {
 	}
 
 	public void setupHUD() {
-		Setting font_shadow = this.addBooleanSetting("Font Shadow", this, true);
+		
 		Setting background = this.addBooleanSetting("Background", this, true);
+		Setting bracketsSettings = this.addBooleanSetting("Brackets", this, true);
+		Setting font_shadow = this.addBooleanSetting("Font Shadow", this, true);
 
 		// TODO: Make it in constructor
 		font_shadow.setCategory("Render");
 		background.setCategory("Render");
+		bracketsSettings.setCategory("Render");
 
 		Setting test = this.addSliderSetting("Test", this, 0, 0, 15, false);
 		test.setCategory("Test");
@@ -24,16 +27,25 @@ public class HUDMod extends Mod {
 
 	public void onRender2D() {
 
-		boolean background = Soar.INSTANCE.settingsManager.getSettingByName(this, "Font Shadow").getValBoolean();
+		boolean background = Soar.INSTANCE.settingsManager.getSettingByName(this, "Background").getValBoolean();
+		boolean brackets = Soar.INSTANCE.settingsManager.getSettingByName(this, "Brackets").getValBoolean();
 		boolean fontShadow = Soar.INSTANCE.settingsManager.getSettingByName(this, "Font Shadow").getValBoolean();
 
-		if(background) {
-			RenderUtils.drawRect(this.getX(), this.getY(), fr.getStringWidth(this.getText()) + 8, fr.FONT_HEIGHT + 8, this.getBackgroundColor());
+		String text = "";
+		
+		if(brackets) {
+			text = "[" + this.getText() + "]";
+		}else {
+			text = this.getText();
 		}
+		
+		if(background) {
+			RenderUtils.drawRect(this.getX(), this.getY(), fr.getStringWidth(text) + 8, fr.FONT_HEIGHT + 8, this.getBackgroundColor());
+		}
+		
+		fr.drawString(text, this.getX() + 4, this.getY() + 5, this.getFontColor(), fontShadow);
 
-		fr.drawString(this.getText(), this.getX() + 4, this.getY() + 5, this.getFontColor(), fontShadow);
-
-		this.setWidth(fr.getStringWidth(this.getText()) + 8);
+		this.setWidth(fr.getStringWidth(text) + 8);
 		this.setHeight(fr.FONT_HEIGHT + 8);
 	}
 
