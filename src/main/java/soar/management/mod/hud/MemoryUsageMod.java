@@ -10,6 +10,11 @@ public class MemoryUsageMod extends HUDMod{
 		super("Memory Usage");
 	}
 
+	@Override
+	public void setup() {
+		super.setupHUD();
+	}
+	
 	@EventTarget
 	public void onRender2D(EventRender2D event) {
 		super.onRender2D();
