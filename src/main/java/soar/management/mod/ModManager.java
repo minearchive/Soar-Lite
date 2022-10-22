@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import soar.management.mod.hud.CoordsMod;
 import soar.management.mod.hud.DayCounterMod;
 import soar.management.mod.hud.FPSDisplayMod;
+import soar.management.mod.hud.MemoryUsageMod;
 import soar.management.mod.hud.PingDisplayMod;
 import soar.management.mod.hud.PotionCounterMod;
 import soar.management.mod.hud.ServerIPDisplayMod;
@@ -23,6 +24,7 @@ public final class ModManager {
 		mods.add(new CoordsMod());
 		mods.add(new DayCounterMod());
 		mods.add(new FPSDisplayMod());
+		mods.add(new MemoryUsageMod());
 		mods.add(new PingDisplayMod());
 		mods.add(new PotionCounterMod());
 		mods.add(new ServerIPDisplayMod());
