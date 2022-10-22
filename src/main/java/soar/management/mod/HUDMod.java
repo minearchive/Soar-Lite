@@ -40,12 +40,4 @@ public class HUDMod extends Mod {
 	public String getText() {
 		return null;
 	}
-
-	private int getFontColor() {
-		return -1;
-	}
-
-	private int getBackgroundColor() {
-		return Integer.MIN_VALUE;
-	}
 }

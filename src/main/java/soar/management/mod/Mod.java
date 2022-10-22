@@ -166,4 +166,12 @@ public class Mod {
 		Soar.INSTANCE.settingsManager.addSetting(setting =new Setting(name, mod, defaultValue, minValue, maxValue, intValue));
 		return setting;
 	}
+	
+	public int getFontColor() {
+		return -1;
+	}
+
+	public int getBackgroundColor() {
+		return Integer.MIN_VALUE;
+	}
 }

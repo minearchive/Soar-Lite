@@ -2,6 +2,7 @@ package soar.management.mod;
 
 import java.util.ArrayList;
 
+import soar.management.mod.hud.CoordsMod;
 import soar.management.mod.hud.DayCounterMod;
 import soar.management.mod.hud.FPSDisplayMod;
 import soar.management.mod.hud.PingDisplayMod;
@@ -16,7 +17,9 @@ public final class ModManager {
 	private ArrayList<Mod> mods = new ArrayList<Mod>();
 
 	public ModManager() {
+		
 		//HUD
+		mods.add(new CoordsMod());
 		mods.add(new DayCounterMod());
 		mods.add(new FPSDisplayMod());
 		mods.add(new PingDisplayMod());
