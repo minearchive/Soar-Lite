@@ -1,5 +1,7 @@
 package soar.gui.settings;
 
+import java.awt.Color;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
@@ -9,13 +11,14 @@ import soar.management.mod.Mod;
 import soar.management.mod.ModCategory;
 import soar.utils.GlUtils;
 import soar.utils.RenderUtils;
+import soar.utils.animation.SimpleAnimation;
 import soar.utils.mouse.MouseUtils;
 
 public final class GuiModMenu extends GuiScreen {
 
 	private final FontRenderer font = Minecraft.getMinecraft().fontRendererObj;
 	private ModCategory selectedCategory;
-
+	
 	public GuiModMenu() {
 		selectedCategory = ModCategory.HUD;
 	}
@@ -69,6 +72,12 @@ public final class GuiModMenu extends GuiScreen {
 				RenderUtils.drawRect(x + 100, y + modOffsetY, width - 115, 28, Integer.MIN_VALUE);
 				font.drawString(m.getName(), x + 110, y + modOffsetY + 10, -1);
 
+				m.buttonAnimation.setAnimation(m.isToggled() ? 40 : 62, 18);
+				
+				//Draw toggle button
+				RenderUtils.drawRect(x + width - 65, y + modOffsetY + 5, 43, 18, m.isToggled() ? Color.GREEN.getRGB() : Color.RED.getRGB());
+				RenderUtils.drawRect(x + width - m.buttonAnimation.getValue(), y + modOffsetY + 6.5F, 15, 15, Color.WHITE.getRGB());
+				
 				modOffsetY+=35;
 			}
 		}

@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import soar.Soar;
 import soar.management.setting.Setting;
+import soar.utils.animation.SimpleAnimation;
 
 public class Mod {
 
@@ -19,6 +20,8 @@ public class Mod {
 	private boolean toggled, dragging, hide;
 	
 	private ModCategory category;
+	
+	public SimpleAnimation buttonAnimation = new SimpleAnimation(62.0F);
 	
 	public Mod(String name, ModCategory category) {
 		this.name = name;
