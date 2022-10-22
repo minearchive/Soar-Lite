@@ -5,7 +5,7 @@ public final class ServerUtils implements Utils {
 	public static String getServerIP() {
 		String ip;
 
-		if (MC.getCurrentServerData().serverIP != null) {
+		if (MC.getCurrentServerData() != null) {
 			ip = MC.getCurrentServerData().serverIP;
 		} else {
 			ip = "SinglePlayer";
