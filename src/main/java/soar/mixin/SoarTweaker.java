@@ -38,7 +38,7 @@ public final class SoarTweaker implements ITweaker {
         }
 
         if (assetsDir != null) {
-            launchArguments.add("--assetDir");
+            launchArguments.add("--assetsDir");
             launchArguments.add(assetsDir.getAbsolutePath());
         }
 
