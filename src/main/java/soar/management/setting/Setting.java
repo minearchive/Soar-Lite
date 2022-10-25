@@ -26,7 +26,7 @@ public final class Setting implements Comparable<Setting> {
 	private Color cval;
 
 	// Settings category
-	private String category;
+	private String category = "";
 
 
 	public Setting(String name, Mod parent, String sval, ArrayList<String> options) {

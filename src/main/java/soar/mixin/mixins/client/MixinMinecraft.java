@@ -1,6 +1,7 @@
 package soar.mixin.mixins.client;
 
 import net.minecraft.util.Session;
+import net.minecraft.util.Timer;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,6 +26,8 @@ public class MixinMinecraft implements IMixinMinecraft {
 
     @Shadow
     private String serverName;
+
+    @Shadow private Timer timer;
 
     @Inject(method = "startGame", at = @At(value = "FIELD", target = "Lnet/minecraft/client/Minecraft;ingameGUI:Lnet/minecraft/client/gui/GuiIngame;", shift = At.Shift.AFTER))
     private void startClient(CallbackInfo ci) {
@@ -54,4 +57,10 @@ public class MixinMinecraft implements IMixinMinecraft {
     public void setSession(String username, String id, String token, String type) {
         this.session = new Session(username,id,token,type);
     }
+
+    @Override
+    public float getPartialTicks() {
+        return timer.renderPartialTicks;
+    }
+
 }

@@ -14,9 +14,11 @@ public final class KeyBindManager {
 	private static final String CATEGORY = "Soar Lite";
 
 	public KeyBinding CLIENT_SETTING = new KeyBinding("Client Settings", Keyboard.KEY_RSHIFT, CATEGORY);
+    public KeyBinding PERSPECTIVE_KEYBIND = new KeyBinding("Perspective Mod", Keyboard.KEY_LMENU, CATEGORY);
 
 	public KeyBindManager() {
 		this.register(CLIENT_SETTING);
+        this.register(PERSPECTIVE_KEYBIND);
 	}
 
     public void register(KeyBinding key) {

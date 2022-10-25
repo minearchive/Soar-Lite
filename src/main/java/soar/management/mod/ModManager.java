@@ -11,56 +11,59 @@ import soar.management.mod.hud.PotionCounterMod;
 import soar.management.mod.hud.ServerIPDisplayMod;
 import soar.management.mod.other.ClientSettingsMod;
 import soar.management.mod.player.HypixelMod;
+import soar.management.mod.player.PerspectiveMod;
 import soar.management.mod.player.SprintMod;
 import soar.management.mod.render.FullbrightMod;
 
 public final class ModManager {
 
-	private ArrayList<Mod> mods = new ArrayList<Mod>();
+    public final PerspectiveMod perspectiveMod;
+    private final ArrayList<Mod> mods = new ArrayList<>();
 
-	public ModManager() {
-		
-		//HUD
-		mods.add(new CoordsMod());
-		mods.add(new DayCounterMod());
-		mods.add(new FPSDisplayMod());
-		mods.add(new MemoryUsageMod());
-		mods.add(new PingDisplayMod());
-		mods.add(new PotionCounterMod());
-		mods.add(new ServerIPDisplayMod());
+    public ModManager() {
 
-		//Performance
+        //HUD
+        mods.add(new CoordsMod());
+        mods.add(new DayCounterMod());
+        mods.add(new FPSDisplayMod());
+        mods.add(new MemoryUsageMod());
+        mods.add(new PingDisplayMod());
+        mods.add(new PotionCounterMod());
+        mods.add(new ServerIPDisplayMod());
 
-		//Player
-		mods.add(new HypixelMod());
-		mods.add(new SprintMod());
+        //Performance
 
-		//Render
-		mods.add(new FullbrightMod());
-		
-		//Other
-		mods.add(new ClientSettingsMod());
-	}
+        //Player
+        mods.add(new HypixelMod());
+        mods.add(new SprintMod());
+        mods.add(this.perspectiveMod = new PerspectiveMod());
 
-	public ArrayList<Mod> getMods() {
-		return mods;
-	}
+        //Render
+        mods.add(new FullbrightMod());
 
-	public Mod getModByName(String name) {
-		return mods.stream().filter(mod -> mod.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
-	}
+        //Other
+        mods.add(new ClientSettingsMod());
+    }
 
-	public Mod getModByClass(Class<?> modClass) {
-		return mods.stream().filter(mod -> mod.getClass().equals(modClass)).findFirst().orElse(null);
-	}
+    public ArrayList<Mod> getMods() {
+        return mods;
+    }
 
-	public ArrayList<Mod> getModByCategory(ModCategory c) {
-		ArrayList<Mod> mods = new ArrayList<Mod>();
-		for (Mod m : this.mods) {
-			if (m.getCategory() == c) {
-				mods.add(m);
-			}
-		}
-		return mods;
-	}
+    public Mod getModByName(String name) {
+        return mods.stream().filter(mod -> mod.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+    }
+
+    public Mod getModByClass(Class<?> modClass) {
+        return mods.stream().filter(mod -> mod.getClass().equals(modClass)).findFirst().orElse(null);
+    }
+
+    public ArrayList<Mod> getModByCategory(ModCategory c) {
+        ArrayList<Mod> mods = new ArrayList<Mod>();
+        for (Mod m : this.mods) {
+            if (m.getCategory() == c) {
+                mods.add(m);
+            }
+        }
+        return mods;
+    }
 }

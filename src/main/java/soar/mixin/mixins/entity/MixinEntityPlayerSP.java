@@ -16,4 +16,5 @@ public class MixinEntityPlayerSP {
 		EventUpdate event = new EventUpdate();
 		event.call();
 	}
+
 }
